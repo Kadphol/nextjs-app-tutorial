@@ -11,7 +11,7 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const currentPage = Number(searchParams.get('page')) || 1
-  // const allPages = generatePagination(currentPage, totalPages);
+  const allPages = generatePagination(currentPage, totalPages)
 
   const createPageURL = (pageNumber: number | string) => {
     const params = new URLSearchParams(searchParams)
@@ -31,7 +31,7 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
         />
 
         <div className="flex -space-x-px">
-          {/* {allPages.map((page, index) => {
+          {allPages.map((page, index) => {
             let position: 'first' | 'last' | 'single' | 'middle' | undefined
 
             if (index === 0) position = 'first'
@@ -48,7 +48,7 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
                 isActive={currentPage === page}
               />
             )
-          })} */}
+          })}
         </div>
 
         <PaginationArrow
